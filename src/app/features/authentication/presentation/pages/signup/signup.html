@@ -1,1 +1,20 @@
-<p>signup works!</p>
+<div class=" place-items-center h-full mt-25 mb-50">
+		<div class="rounded-lg p-10 shadow-xs flex flex-col  place-items-center w-110">
+			<p class="font-bold text-3xl">Create an account</p>
+			<div class="hover:shadow-md  font-semibold border-2 flex flex-row w-full rounded-lg place-items-center justify-center mb-4">
+				<img src="./icons/socials/google.svg" class="h-10 p-2">
+				Sign up with Google
+			</div>
+
+			<div class="text-white font-semibold hover:shadow-md bg-black flex flex-row w-full rounded-lg place-items-center justify-center mb-4">
+				<img src="./icons/socials/apple.svg" class="h-10 p-2">
+				Sign up with Apple
+			</div>
+
+			<app-auth-btn [btnName]="googleBtn.name" [iconUrl]="googleBtn.path" ng-style="bg-black"></app-auth-btn>
+			
+<p class="pb-10">OR</p>
+Name
+<input type="text" placeholder="Enter your name" class="border-2 w-full rounded-lg h-10 p-2" name=""/>
+		</div>
+</div>

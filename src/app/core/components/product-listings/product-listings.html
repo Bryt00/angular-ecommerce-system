@@ -1,0 +1,69 @@
+ <div class="flex  overflow-x-scroll no-scrollbar flex-row  gap-4">
+
+
+ 	<div *ngFor="let product of filteredProducts"  class="m-5 w-fit ">
+ 		<div class="bg-gray-50 m-5 hover:shadow-md w-60 flex justify-center rounded-2xl overflow-hidden" >
+ 			<a href="#"> <img [src]="product.imageUrl" class="h-80" ></a>
+
+ 		</div>
+ 		<div class="p-2 bg-transparent">
+ 			<div class="pl-6">
+ 				<ul>
+ 					<li class="font-bold uppercase">
+ 						{{product.name}}
+ 					</li>
+ 					<div class="flex flex-row">
+
+ 					<ng-container *ngFor="let ratingStar of ratingStars; let i = index">
+        
+        <!-- Full star -->
+        <ng-container *ngIf="i < Math.floor(product.ratings); else checkHalf">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            fill="currentColor" class="w-5 h-5 text-yellow-500">
+            <path fill-rule="evenodd"
+              d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7-5.4-4.7 7.1-.6L12 2z"
+              clip-rule="evenodd"/>
+          </svg>
+        </ng-container>
+
+        <!-- Half star -->
+        <ng-template #checkHalf>
+          <ng-container *ngIf="i === Math.floor(product.ratings) && product.ratings % 1 >= 0.5; else emptyStar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              class="w-5 h-5 text-yellow-500">
+              <defs>
+                <linearGradient id="half-grad">
+                  <stop offset="50%" stop-color="currentColor"/>
+                  <stop offset="50%" stop-color="lightgray"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#half-grad)"
+                d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7-5.4-4.7 7.1-.6L12 2z"/>
+            </svg>
+          </ng-container>
+        </ng-template>
+
+        <!-- Empty star -->
+        <ng-template #emptyStar>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            fill="currentColor" class="w-5 h-5 text-gray-300">
+            <path fill-rule="evenodd"
+              d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7-5.4-4.7 7.1-.6L12 2z"
+              clip-rule="evenodd"/>
+          </svg>
+        </ng-template>
+      </ng-container>
+
+
+ 			</div>
+ 			<li>
+ 				${{product.price}}
+ 			</li>
+
+ 		</ul>
+
+
+
+ 	</div>
+ </div>
+</div>
